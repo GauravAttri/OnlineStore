@@ -20,7 +20,7 @@
 		<div align="center">
 
 			<table border="1" width="90%">
-				<form:form action="${pageContext.request.contextPath}/admin//updateProduct"
+				<form:form action="${pageContext.request.contextPath}/updateProduct"
 					method="post" commandName="product" enctype="multipart/form-data">
 
 					<div class="form-group">

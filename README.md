@@ -1,1 +1,1 @@
-# MyOnlineShoppingSite
+# TrendyStoreProject

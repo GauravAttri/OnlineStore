@@ -62,10 +62,10 @@
 			               </td>
 			                 
 			               <td>
-			               <a href="<c:url value='/admin/updateProduct/${product.productID}' />"><span  class="glyphicon glyphicon-pencil"></span></a>
+			               <a href="<c:url value='/updateProduct/${product.productID}' />"><span  class="glyphicon glyphicon-pencil"></span></a>
 			               </td>
 			                <td>
-			               <a href="<c:url value='/admin/deleteProduct/${product.productID}' />"><span  class="glyphicon glyphicon-remove"></span></a>
+			               <a href="<c:url value='/deleteProduct/${product.productID}' />"><span  class="glyphicon glyphicon-remove"></span></a>
 			               </td>
 	</tr>
 					</c:forEach>
