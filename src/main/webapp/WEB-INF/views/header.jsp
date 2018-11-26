@@ -18,8 +18,9 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+	
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="./resources/css/finalstyle.css">
@@ -118,23 +119,40 @@ footer a:hover {
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 
-                        <c:if test="${pageContext.request.userPrincipal.name != null}">
-                            <li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
-                            <li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
+				<c:if test="${pageContext.request.userPrincipal.name != null}">
 
-                            <c:if test="${pageContext.request.userPrincipal.name != 'admin'}">
-                                <li><a href="<c:url value="/customer/cart" />">User Cart</a></li>
-                            </c:if>
+					<li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
 
-                            <c:if test="${pageContext.request.userPrincipal.name == 'admin'}">
-                                <li><a href="<c:url value="/admin" />">Administrator</a></li>
-                            </c:if>
+					<li><a href="<c:url value="/perform_logout" />">Logout</a></li>
 
-                        </c:if>
+
+
+					<security:authorize access="hasRole('ROLE_USER')">
+
+						<li><a href="<c:url value="/user/cart" />">User Cart</a></li>
+
+					</security:authorize>
+
+
+
+					<security:authorize access="hasRole('ROLE_ADMIN')">
+
+						<li><a href="<c:url value="/admin/adminHome" />">Administrator</a></li>
+
+					</security:authorize>
+
+
+
+				</c:if>
+
+
 
 				<c:if test="${pageContext.request.userPrincipal.name == null}">
+
 					<li><a href="<c:url value="/login" />">Login</a></li>
+
 					<li><a href="<c:url value="/register" />">Register</a></li>
+
 				</c:if>
 			</ul>
 

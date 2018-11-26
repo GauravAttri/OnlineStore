@@ -1,7 +1,4 @@
 package com.niit.trendystore.controller;
-
-
-
 import com.niit.trendystore.model.BillingAddress;
 import com.niit.trendystore.model.Customer;
 import com.niit.trendystore.model.ShippingAddress;
