@@ -29,6 +29,33 @@ public class HomeController {
 		return "contact";
 	}
 	
+	@RequestMapping("/login")
+	public String loginPage(
+            @RequestParam(value="error", required = false)
+            String error,
+            @RequestParam(value="logout", required = false)
+            String logout,
+            Model model){
+
+        if(error != null){
+            model.addAttribute("error", "Invalid username and password");
+        }
+
+        if (logout !=null){
+            model.addAttribute("msg", "You have been logged out successfully");
+        }
+
+        return "login";
+    }
+	
+	@RequestMapping(value="/perform_logout", method = RequestMethod.GET)
+	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+	    org.springframework.security.core.Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    if (auth != null){    
+	        new SecurityContextLogoutHandler().logout(request, response, auth);
+	    }
+	    return "redirect:/";//You can redirect wherever you want, but generally it's a good practice to show login screen again.
+	}
 
 
 	
