@@ -18,16 +18,16 @@
 				<p class="lead">Welcome to the administrator page!</p>
 			</div>
 
-			<c:if test="${pageContext.request.userPrincipal.name != null}">
+			<%-- <c:if test="${pageContext.request.userPrincipal.name != null}"> --%>
 				<h2>
-					Welcome: ${pageContext.request.userPrincipal.name} | <a href="<c:url value="/perform_logout" />">Logout</a>
+					Welcome: Admin | <a href="<c:url value="/perform_logout" />">Logout</a>
 				</h2>
 
 				<security:authorize access="hasRole('ROLE_ADMIN')">
 
 					<h3>
 
-						<a href="<c:url value="/admin/productInventory" /> ">Product
+						<a href="<c:url value="/allProducts" /> ">Product
 							Inventory</a>
 					</h3>
 
@@ -43,6 +43,6 @@
 
 					<p>Click Here to view the customer information!</p>
 				</security:authorize>
-			</c:if>
+			<%-- </c:if> --%>
 </body>
 </html>

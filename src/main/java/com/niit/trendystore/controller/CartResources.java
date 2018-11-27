@@ -1,5 +1,6 @@
 package com.niit.trendystore.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +42,11 @@ public class CartResources {
     public @ResponseBody Cart getCartById(@PathVariable(value = "cartId") int cartId){
         return cartService.getCartById(cartId);
     }
-    @RequestMapping(value = "/add/{productId}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/add/{productId}", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void addItem (@PathVariable(value = "productId") int productId, @AuthenticationPrincipal User activeUser){
-        Customer customer = customerService.getCustomerByUsername(activeUser.getUsername());
+    public void addItem (@PathVariable(value = "productId") int productId, Principal p){
+    	System.out.println("Inside cartresources :: "+p.getName());
+        Customer customer = customerService.getCustomerByUsername(p.getName());
         Cart cart = customer.getCart();
         Product product = productService.getProductById(productId);
         List<CartItem> cartItems = cart.getCartItems();

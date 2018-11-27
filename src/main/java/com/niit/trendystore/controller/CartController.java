@@ -1,5 +1,7 @@
 package com.niit.trendystore.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -12,17 +14,17 @@ import com.niit.trendystore.model.User;
 import com.niit.trendystore.service.CustomerService;
 
 @Controller
-@RequestMapping("/customer/cart")
+@RequestMapping("/user/cart")
 public class CartController {
 	@Autowired
     private CustomerService customerService;
 
     @RequestMapping
-    public String getCart(@AuthenticationPrincipal User activeUser){
-        Customer customer = customerService.getCustomerByUsername(activeUser.getUsername());
+    public String getCart(Principal p){
+        Customer customer = customerService.getCustomerByUsername(p.getName());
         int cartId = customer.getCart().getCartId();
 
-        return "redirect:/customer/cart/" + cartId;
+        return "redirect:/user/cart/" + cartId;
     }
     
     @RequestMapping("/{cartId}")

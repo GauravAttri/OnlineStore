@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add Products</title>
+             <title>Add Products</title>
 
 </head>
 <body>
@@ -20,7 +20,7 @@
 		<div align="center">
 
 			<table border="1" width="90%">
-				<form:form action="${pageContext.request.contextPath}/addProducts"
+				<form:form action="${pageContext.request.contextPath}/admin/addProducts"
 					method="post" commandName="product" enctype="multipart/form-data">
 
 					<div class="form-group">
